@@ -33,8 +33,8 @@
 
 - Issue: #1 — Define project requirements and cloud development workflow
 - Branch: `docs/issue-1-project-requirements`
-- Pull request: Not opened yet
-- Commit: Pending
+- Pull request: #2
+- Commit: `docs: define project requirements and cloud workflow`
 - Tests run: `git diff --cached --check` and manual requirements review
 
 
