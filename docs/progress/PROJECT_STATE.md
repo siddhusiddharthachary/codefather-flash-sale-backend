@@ -1,85 +1,102 @@
 # Current Project State
 
-- Date: November 17, 2026
-- Day number: 1
-- Current phase: Days 1-7 — Foundation
-- Current milestone: Define requirements and cloud development workflow
+- Date: November 23, 2026
+- Original project calendar day: 7
+- Seven-day completion sprint: Day 1 of 7
+- Current phase: Compressed foundation
+- Current milestone: HLD v1 and technology baseline
 
 ## Completed Today
 
-- Created the public `codefather-flash-sale-backend` repository.
-- Opened the repository in GitHub Codespaces.
-- Verified the repository remote and `main` branch.
-- Created Issue #1 with explicit acceptance criteria.
-- Created and checked out `docs/issue-1-project-requirements`.
-- Documented the problem statement.
-- Documented the initial functional requirements.
-- Documented the initial non-functional requirements.
-- Documented the cloud-only development workflow.
-- Updated the repository README.
+- Confirmed that Issue #1 is closed.
+- Confirmed that Pull Request #2 is merged.
+- Synchronized Codespaces with `main`.
+- Deleted the completed requirements branch locally and remotely.
+- Created Issue #3 for HLD v1 and the technology baseline.
+- Created branch `design/issue-3-hld-tech-baseline`.
+- Documented the seven-day completion sprint.
+- Created HLD version 1.
+- Recorded the modular-monolith decision.
+- Recorded the initial technology baseline.
+- Updated README architecture and documentation links.
 
 ## What I Learned
 
-- Functional requirements describe what the system must do.
-- Non-functional requirements describe qualities and correctness constraints.
-- Requirements should be defined before selecting architecture.
-- An invariant is a rule that must remain true during concurrency and failure.
-- A workload scenario is not an achieved benchmark.
-- A Git branch is not complete work until the change is reviewed and merged.
+- A modular monolith separates business responsibilities without creating
+  network boundaries.
+- Strong consistency is required around inventory reservation and business
+  state transitions.
+- Eventual consistency is acceptable for notifications and other
+  non-authoritative side effects.
+- Technology versions should be selected using compatibility, support, and
+  delivery risk rather than the largest version number.
+- An HLD may preserve open decisions without pretending experiments have
+  already selected the final solution.
 
 ## GitHub Evidence
 
-## GitHub Evidence
-
-- Issue: #1 — Define project requirements and cloud development workflow
-- Branch: `docs/issue-1-project-requirements`
-- Pull request: #2
-- Commit: `docs: define project requirements and cloud workflow`
-- Tests run: `git diff --cached --check` and manual requirements review
-
+- Issue: #3 — Create HLD v1 and lock the technology baseline
+- Branch: `design/issue-3-hld-tech-baseline`
+- Pull request: Pending
+- Commit: Pending
+- Verification: `git diff --cached --check`, Markdown review, and Mermaid preview
 
 ## Current Architecture
 
-- Documentation-first foundation.
-- Modular monolith selected as the initial architecture direction.
-- PostgreSQL selected as the initial source of truth.
-- No application code has been generated.
-- Redis and Kafka are deferred until a demonstrated need exists.
-- Kubernetes and unnecessary cloud infrastructure are out of scope.
+- One Spring Boot modular monolith.
+- One deployable application.
+- PostgreSQL as the initial source of truth.
+- Logical modules for catalog, inventory, flash sale, reservation, order,
+  payment, outbox, and notification.
+- Redis and Kafka deferred until evidence demonstrates a need.
+- Kubernetes out of scope.
+- Java 21, Spring Boot 4.1.3, Maven 3.10.2, and PostgreSQL 18.7 selected as the
+  initial baseline.
 
 ## Open Problems
 
-- HLD version 1 has not been created.
-- Exact compatible Java and Spring Boot versions have not been selected.
-- The Spring Boot project has not been generated.
-- PostgreSQL has not been configured.
-- No automated tests or CI pipeline exist yet.
-- No benchmark has been run.
+- The Spring Boot application has not been generated.
+- PostgreSQL is not yet running through Docker Compose.
+- Database migrations do not exist.
+- The health endpoint does not exist.
+- GitHub Actions CI does not exist.
+- The final inventory concurrency strategy is intentionally undecided.
+- The order state machine remains provisional.
+- No benchmark or failure test has been run.
 
 ## Decisions Made
 
-- GitHub is the source of truth.
-- GitHub Codespaces is the default development environment.
-- No local project folder is required.
-- Requirements will be documented before architecture and implementation.
-- PostgreSQL correctness will be established before adding Redis.
-- A real asynchronous problem must be demonstrated before adding Kafka.
-- No measured performance or reliability result will be fabricated.
+- Use a modular monolith.
+- Package code by business capability.
+- Use PostgreSQL for authoritative business state.
+- Use a reservation-first purchase workflow.
+- Create a `PAYMENT_PENDING` order during a successful reservation transaction.
+- Use OpenJDK 21.
+- Use Spring Boot 4.1.3.
+- Use Maven 3.10.2 through Maven Wrapper.
+- Use PostgreSQL 18.7.
+- Defer Redis and Kafka.
+- Do not use Kubernetes.
 
 ## YouTube Asset Produced
 
-- Captured or planned screenshots of the repository, Issue #1, Codespace,
-  feature branch, documentation tree and pull request.
-- No long-form video has been published yet.
-- Week 1 content will be based on completed foundation evidence rather than
-  unsupported architecture claims.
+- System-context diagram.
+- Primary purchase-flow sequence diagram.
+- Conceptual entity-relationship diagram.
+- Technology-decision narrative.
+- Seven-day sprint narrative.
+
+No technical video has been published yet because the application has not
+produced working or failing runtime evidence.
 
 ## Next Session's First Task
 
-Create Issue #2 for HLD version 1 and identify the system boundary, major
-modules and primary request flow.
+Create the Spring Boot skeleton with PostgreSQL, Flyway, Actuator, Docker
+Compose, a health endpoint, and GitHub Actions CI.
 
 ## Exact Resume Evidence Earned
 
-No resume bullet yet. Repository and requirements setup are necessary project
-evidence, but they are not yet sufficient for a technical achievement claim.
+No resume bullet yet.
+
+The requirements, HLD, and ADRs establish engineering intent, but a technical
+achievement bullet requires working implementation and test evidence.
