@@ -37,8 +37,8 @@
 
 - Issue: #3 — Create HLD v1 and lock the technology baseline
 - Branch: `design/issue-3-hld-tech-baseline`
-- Pull request: Pending
-- Commit: Pending
+- Pull request: #4
+- Commit: `docs: add HLD v1 and technology baseline`
 - Verification: `git diff --cached --check`, Markdown review, and Mermaid preview
 
 ## Current Architecture
